@@ -9,11 +9,6 @@ from torch_geometric.loader import NeighborLoader
 import torch_geometric.transforms as T
 from torch_geometric.datasets import FakeDataset
 import torch_geometric
-import numpy as np
-import random
-random.seed(42)
-torch.manual_seed(42)
-np.random.seed(42)
 torch_geometric.seed.seed_everything(42)
 data = FakeDataset(avg_num_nodes=20000).generate_data()
 print(data)
