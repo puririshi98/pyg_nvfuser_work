@@ -10,7 +10,7 @@ import torch_geometric.transforms as T
 from torch_geometric.datasets import FakeDataset
 
 torch.manual_seed(42)
-data = FakeDataset(avg_num_nodes=100000).generate_data()
+data = FakeDataset(avg_num_nodes=20000).generate_data()
 print(data)
 class Net(torch.nn.Module):
     def __init__(self):
