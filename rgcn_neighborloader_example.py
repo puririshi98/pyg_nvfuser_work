@@ -34,7 +34,7 @@ def run_epoch():
         optimizer.zero_grad()
         out = model(batch.x, batch.edge_index)
         batch_size = batch.batch_size
-        loss = F.nll_loss(out[:batch_size], data.y[:batch_size])
+        loss = F.nll_loss(out[:batch_size], batch.y[:batch_size])
         loss.backward()
         optimizer.step()
 
