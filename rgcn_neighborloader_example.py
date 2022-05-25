@@ -41,8 +41,8 @@ def run_epoch():
 
 import time
 model.train()
-for epoch in range(1, 51):
+for epoch in range(1, 21):
     if epoch==6:
         since=time.time()
     run_epoch()
-print("Average per epoch time:", (time.time()-since)/45.0)
+print("Average per epoch time:", (time.time()-since)/15.0)
