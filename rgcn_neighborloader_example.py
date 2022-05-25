@@ -25,7 +25,7 @@ class Net(torch.nn.Module):
 
 
 device = torch.device('cuda' if torch.cuda.is_available() else 'cpu')
-model, data = Net().to(device), data.to(device)
+model = Net().to(device)
 optimizer = torch.optim.Adam(model.parameters(), lr=0.01, weight_decay=0.0005)
 loader = NeighborLoader(data, [10, 10], transform=T.ToDevice(device), batch_size=64)
 def run_epoch():
