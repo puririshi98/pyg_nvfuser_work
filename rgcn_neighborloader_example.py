@@ -8,6 +8,7 @@ from torch_geometric.nn import GraphConv
 from torch_geometric.loader import NeighborLoader
 import torch_geometric.transforms as T
 from torch_geometric.datasets import FakeDataset
+import torch_geometric
 import numpy as np
 import random
 random.seed(42)
