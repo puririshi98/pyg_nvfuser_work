@@ -11,7 +11,7 @@ from torch_geometric.datasets import FakeDataset
 import torch_geometric
 torch_geometric.seed.seed_everything(42)
 data = FakeDataset(avg_num_nodes=20000, num_channels=128).generate_data()
-class Net(torch.nn.Module):
+class GCN(torch.nn.Module):
     def __init__(self):
         super().__init__()
         self.conv1 = GraphConv(data.x.size()[-1], 64)
@@ -26,7 +26,7 @@ class Net(torch.nn.Module):
 
 
 device = torch.device('cuda' if torch.cuda.is_available() else 'cpu')
-gcn = Net().to(device)
+gcn = GCN().to(device)
 optimizer = torch.optim.Adam(model.parameters(), lr=0.01, weight_decay=0.0005)
 loader = NeighborLoader(data, [50, 50], transform=T.ToDevice(device), batch_size=128)
 def run_epoch(model):
@@ -41,7 +41,7 @@ def run_epoch(model):
 
 import time
 
-def benchmark_epoch_time(model)
+def benchmark_epoch_time(model):
     model.train()
     for epoch in range(1, 21):
         if epoch==6:
