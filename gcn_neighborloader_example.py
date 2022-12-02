@@ -27,8 +27,6 @@ class GCN(torch.nn.Module):
 
 device = torch.device('cuda' if torch.cuda.is_available() else 'cpu')
 gcn = GCN().to(device)
-optimizer = torch.optim.Adam(gcn.parameters(), lr=0.01, weight_decay=0.0005)
-loader = NeighborLoader(data, [50, 50], transform=T.ToDevice(device), batch_size=128)
 def run_epoch(model):
     for batch in loader:
         optimizer.zero_grad()
@@ -43,6 +41,8 @@ import time
 
 def benchmark_epoch_time(model):
     model.train()
+    optimizer = torch.optim.Adam(model.parameters(), lr=0.01, weight_decay=0.0005)
+    loader = NeighborLoader(data, [50, 50], transform=T.ToDevice(device), batch_size=128)
     for epoch in range(1, 21):
         if epoch==6:
             since=time.time()
