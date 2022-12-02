@@ -27,7 +27,7 @@ class GCN(torch.nn.Module):
 
 device = torch.device('cuda' if torch.cuda.is_available() else 'cpu')
 gcn = GCN().to(device)
-def run_epoch(model):
+def run_epoch(model, loader, optimizer):
     for batch in loader:
         optimizer.zero_grad()
         out = model(batch.x, batch.edge_index)
@@ -46,7 +46,7 @@ def benchmark_epoch_time(model):
     for epoch in range(1, 21):
         if epoch==6:
             since=time.time()
-        run_epoch(model)
+        run_epoch(model, loader, optimizer)
     print("Average time per epoch:", (time.time()-since)/15.0)
 
 print("Timing eager mode:")
