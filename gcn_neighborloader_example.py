@@ -3,7 +3,8 @@ import os.path as osp
 
 import torch
 import torch.nn.functional as F
-
+import warnings
+warnings.filterwarnings("ignore")
 from torch_geometric.nn import GraphConv, Linear
 from torch_geometric.loader import NeighborLoader
 import torch_geometric.transforms as T
