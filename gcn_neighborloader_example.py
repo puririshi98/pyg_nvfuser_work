@@ -15,9 +15,9 @@ data = FakeDataset(avg_num_nodes=20000, num_channels=128).generate_data()
 class GCN(torch.nn.Module):
     def __init__(self):
         super().__init__()
-        self.conv1 = GraphConv(data.x.size()[-1], 64)
+        self.conv1 = GraphConv(data.x.size()[-1], 64).jittable()
         self.l1 = Linear(64, 32)
-        self.conv2 = GraphConv(32, 16)
+        self.conv2 = GraphConv(32, 16).jittable()
         self.l2 = Linear(16, torch.numel(torch.unique(data.y)))
 
     def forward(self, x, edge_index):
