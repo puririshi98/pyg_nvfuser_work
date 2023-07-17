@@ -53,7 +53,7 @@ def benchmark_epoch_time(model):
 print("Timing eager mode:")
 benchmark_epoch_time(gcn)
 print("compiling openAI GCN...")
-openAI_gcn = torch.compile(gcn, dynamic=True)
+openAI_gcn = torch.compile(gcn, dynamic=True, mode="reduce-overhead")
 print("Timing default torch.compile w/ openAI triton:")
 benchmark_epoch_time(openAI_gcn)
 print("compiling NVFuser GCN...")
