@@ -59,7 +59,6 @@ benchmark_epoch_time(openAI_gcn)
 print("compiling GCN w/ NVIDIA libs...")
 torch._dynamo.reset()
 import lightning
-print("Timing compile w/ nvfuser:")
 nvfuser_gcn = lightning.compile(gcn, dynamic=True)
 print("Timing compile w/ nvfuser:")
 benchmark_epoch_time(nvfuser_gcn)
