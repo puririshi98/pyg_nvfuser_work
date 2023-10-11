@@ -59,6 +59,7 @@ benchmark_epoch_time(openAI_gcn)
 print("compiling GCN w/ NVIDIA libs...")
 torch._dynamo.reset()
 import thunder
+print(thunder.examine(gcn))
 nvfuser_gcn = thunder.compile(gcn)
 print("Timing compile w/ nvfuser:")
 benchmark_epoch_time(nvfuser_gcn)
